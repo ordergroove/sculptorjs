@@ -1,4 +1,5 @@
 "use strict"
+module.exports = function(grunt) {
 grunt.initConfig({
 karma: {
 	options: {
@@ -14,3 +15,4 @@ grunt.registerTask('test', function () {
 	grunt.task.run(['karma:main']);
 });
 grunt.registerTask('coverage', ['karma:coverage']);
+};
