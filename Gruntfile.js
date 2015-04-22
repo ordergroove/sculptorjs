@@ -8,6 +8,7 @@ karma: {
                 browsers: ['PhantomJS']
             },
 	main: {}
+}
 });
 grunt.registerTask('test', function () {
 	grunt.task.run(['karma:main']);
