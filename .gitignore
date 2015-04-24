@@ -1,1 +1,5 @@
+// ignore node modules folder
 node_modules
+
+// temp broserified spec file
+spec.js

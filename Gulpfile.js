@@ -2,19 +2,27 @@
     'use strict';
 
     var gulp = require('gulp'),
-        browserify = require('gulp-browserify'),
         karma = require('gulp-karma'),
+        browserify = require('browserify'),
+        source = require('vinyl-source-stream'),
         pkge = require('./package.json');
 
     // paths
     var paths = {
-        src: 'src/' + pkge.name + '.js',
-        spec: 'test/' + pkge.name + '.spec.js',
+        src: './src/' + pkge.name + '.js',
+        spec: './test/' + pkge.name + '.spec.js',
         output: './'
     }
 
-    gulp.task('test', function() {
-        return gulp.src([ paths.src, paths.spec ])
+    gulp.task('browserify:test', function() {
+        return browserify({entries:[ paths.spec ]})
+            .bundle()
+            .pipe(source('spec.js'))
+            .pipe(gulp.dest(paths.output));
+    });
+
+    gulp.task('test', [ 'browserify:test' ], function() {
+        return gulp.src('./spec.js')
             .pipe(karma({configFile: 'test/karma.conf.js'}));
     });
 
