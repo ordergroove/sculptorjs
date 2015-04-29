@@ -3,21 +3,31 @@
   "name": "sculptor",
   "author": "OrderGroove Developers",
   "version": "1.0.0",
-  "description": "Sculptor Javascript Code",
+  "description": "Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdowns with standard CSS",
   "private": false,
+  "copyright": "2015",
+  "License": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/ordergroove/sculptor"
+    "url": "https://github.com/ordergroove/sculptor"
   },
   "devDependencies": {
+    "browserify": "9.0.8",
+    "del": "1.1.1",
     "gulp": "3.8.11",
-    "karma": "~0.12.31",
+    "gulp-concat-util": "0.5.2",
+    "gulp-jscs": "1.6.0",
+    "gulp-jshint": "1.10.0",
     "gulp-karma": "0.0.4",
-    "jasmine-core": "~2.2.0",
-    "karma-jasmine": "~0.3.5",
-    "karma-phantomjs-launcher": "~0.1.4",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "1.2.0",
+    "jasmine-core": "2.2.0",
+    "jshint-stylish": "1.0.1",
+    "karma": "0.12.31",
+    "karma-jasmine": "0.3.5",
+    "karma-phantomjs-launcher": "0.1.4",
     "karma-spec-reporter": "0.0.19",
-    "browserify": "~9.0.8",
-    "vinyl-source-stream": "~1.1.0"
+    "pocket-dom": "^1.0.2",
+    "vinyl-source-stream": "1.1.0"
   }
 }
