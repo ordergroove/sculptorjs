@@ -14,15 +14,16 @@
         del = require('del'),
         pkg = require('./package.json');
 
-    var banner = '// ' + pkg.name + ' - v' + pkg.version + ' - ' + pkg.license + ' License' +
+    var projectName = pkg.title.toLowerCase(),
+        banner = '// ' + projectName + ' - v' + pkg.version + ' - ' + pkg.license + ' License' +
             '\n// ' +  pkg.description +
             '\n// ' +  pkg.copyright + ' (c) ' + pkg.author + '\n\n';
 
     // paths
     var paths = {
-        src: './src/' + pkg.name + '.js',
-        dist: './dist/' + pkg.name + '.js',
-        spec: './test/' + pkg.name + '.spec.js',
+        src: './src/' + projectName + '.js',
+        dist: './dist/' + projectName + '.js',
+        spec: './test/' + projectName + '.spec.js',
         output: './dist'
     };
 
@@ -37,7 +38,7 @@
     gulp.task('browserify:test', [ 'hint' ], function() {
         return browserify({
                 entries:[ paths.spec ],
-                standalone: pkg.name
+                standalone: projectName
             })
             .bundle()
             .pipe(source('temp_spec.js'))
@@ -47,10 +48,10 @@
     gulp.task('browserify:src', [ 'test' ], function() {
         return browserify({
                 entries:[ paths.src ],
-                standalone: pkg.name
+                standalone: projectName
             })
             .bundle()
-            .pipe(source(pkg.name + '.js'))
+            .pipe(source(projectName + '.js'))
             .pipe(gulp.dest('./dist/'))
     });
 
@@ -60,7 +61,7 @@
     });
 
     gulp.task('less', function() {
-        return gulp.src('./src/' + pkg.name + '.less')
+        return gulp.src('./src/' + projectName + '.less')
             .pipe(less())
             .pipe(gulp.dest(paths.output));
     });
