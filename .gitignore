@@ -1,5 +1,6 @@
 // ignore node modules folder
+npm-debug.log
 node_modules
 
-// temp broserified spec file
-spec.js
+// temp browserified spec file
+temp_spec.js

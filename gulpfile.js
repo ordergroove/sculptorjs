@@ -2,6 +2,7 @@
     'use strict';
 
     var gulp = require('gulp'),
+        less = require('gulp-less'),
         rename = require('gulp-rename'),
         concat = require('gulp-concat-util'),
         karma = require('gulp-karma'),
@@ -34,14 +35,20 @@
     });
 
     gulp.task('browserify:test', [ 'hint' ], function() {
-        return browserify({entries:[ paths.spec ]})
+        return browserify({
+                entries:[ paths.spec ],
+                standalone: pkg.name
+            })
             .bundle()
             .pipe(source('temp_spec.js'))
             .pipe(gulp.dest('./'));
     });
 
     gulp.task('browserify:src', [ 'test' ], function() {
-        return browserify({entries:[ paths.src ]})
+        return browserify({
+                entries:[ paths.src ],
+                standalone: pkg.name
+            })
             .bundle()
             .pipe(source(pkg.name + '.js'))
             .pipe(gulp.dest('./dist/'))
@@ -52,7 +59,13 @@
             .pipe(karma({configFile: 'test/karma.conf.js'}));
     });
 
-    gulp.task('build', [ 'browserify:src' ], function() {
+    gulp.task('less', function() {
+        return gulp.src('./src/' + pkg.name + '.less')
+            .pipe(less())
+            .pipe(gulp.dest(paths.output));
+    });
+
+    gulp.task('build', [ 'browserify:src', 'less' ], function() {
         // test and delete browserified spec file
         del('./temp_spec.js');
 

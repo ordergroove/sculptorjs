@@ -2,3 +2,7 @@
 .jshintrc
 .jscsrc
 .gitignore
+gulpfile.js
+
+// temp browserified spec file
+temp_spec.js

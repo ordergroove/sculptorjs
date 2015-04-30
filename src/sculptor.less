@@ -1,0 +1,42 @@
+.sculptor-dropdown {
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 15px 7px 5px;
+    position: relative;
+
+    .sculptor-dropdown-options {
+        background: #ffffff;
+        border-style: solid;
+        border-width: 1px;
+        display: none;
+        list-style: none;
+        left: -1px;
+        position: absolute;
+        top: 100%;
+        width: inherit;
+        z-index: 1;
+
+        li {
+            padding: 4px 5px;
+        }
+    }
+
+    &:before {
+        content: attr(data-value);
+    }
+
+    &:after {
+        content: '\25BC';
+        position: absolute;
+        right: 2px;
+    }
+
+    &.sculptor-dropdown-opened {
+
+        .sculptor-dropdown-options {
+            display: block;
+        }
+    }
+}

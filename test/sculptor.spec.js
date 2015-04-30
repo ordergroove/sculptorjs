@@ -1,4 +1,4 @@
-(function(doc, jas) {
+(function(doc) {
     'use strict';
 
     var sculptor = require('../src/sculptor'),
@@ -93,63 +93,5 @@
                 expect(true).toBe(true);
             });
         });
-        describe('functionality', function() {
-            var sel,
-                custom,
-                customOptions;
-            beforeEach(function() {
-                sel = doc.createElement('select');
-                sel.innerHTML = '<option value="1">one</option>' +
-                    '<option value="2">two</option>' +
-                    '<option value="3" selected>three</option>' +
-                    '<option value="4" disabled>four</option>' +
-                    '<option value="5">five</option>';
-                dom.setCssProperty(sel, 'display', 'block', 'important');
-                doc.body.appendChild(sel);
-
-                sculptor.init([ sel ]);
-
-                custom = dom.$('.sculptor-dropdown')[0];
-                customOptions = dom.$('li', custom);
-            });
-            afterEach(function() {
-                doc.body.innerHTML = '';
-                sel = custom = customOptions = null;
-            });
-            it('when custom element is clicked, options are visible', function() {
-                jas.util.simulateClick(custom);
-
-                expect(dom.hasClass(custom, 'sculptor-dropdown-opened')).toBe(true);
-            });
-            it('when custom element is clicked twice, options hide', function() {
-                jas.util.simulateClick(custom);
-                jas.util.simulateClick(custom);
-
-                expect(dom.hasClass(custom, 'sculptor-dropdown-opened')).toBe(false);
-            });
-            it('when options are clicked, select value and content are updated', function() {
-                jas.util.simulateClick(custom);
-                jas.util.simulateClick(customOptions[4]);
-
-                expect(custom.getAttribute('data-value')).toBe('five');
-                expect(sel.value).toBe('5');
-            });
-            it('when disabled option is clicked, select value and content don\'t change', function() {
-                var initialValue = sel.value,
-                    initialCustomValue = custom.getAttribute('data-value');
-
-                jas.util.simulateClick(custom);
-                jas.util.simulateClick(customOptions[3]);
-
-                expect(sel.value).toBe(initialValue);
-                expect(custom.getAttribute('data-value')).toEqual(initialCustomValue);
-            });
-            it('after an option is clicked, options hide', function() {
-                jas.util.simulateClick(custom);
-                jas.util.simulateClick(customOptions[1]);
-
-                expect(dom.hasClass(custom, 'sculptor-dropdown-opened')).toBe(false);
-            });
-        });
     });
-})(document, jasmine);
+})(document);
