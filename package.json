@@ -7,10 +7,10 @@
   "private": false,
   "copyright": "2015",
   "license": "MIT",
-  "main": ".dist/sculptor.js",
+  "main": "./src/sculptor.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ordergroove/sculptor"
+    "url": "https://github.com/ordergroove/sculptorjs"
   },
   "dependencies": {
     "pocket-dom": "^1.0.2"

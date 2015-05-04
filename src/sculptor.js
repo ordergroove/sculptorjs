@@ -18,7 +18,7 @@
             len = select.length;
 
         // starts only if select has options
-        if (len > 1) {
+        if (len > 0) {
             // generate element
             customElement = doc.createElement('div');
             dom.addClass(customElement, 'sculptor-dropdown');
