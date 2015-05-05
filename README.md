@@ -93,5 +93,5 @@ but their Sculptor JS counterparts.
 ## Issues
 We love feedback! If you run into any issues while installing or using this project, please create a new issue [here](https://github.com/ordergroove/sculptorjs/issues). If the issue is related to a specific browser(s), then please be sure to leave the browser information in the issue description.
 
-## Special Thanks
+## Special Thanks to OrderGroove
 We would like to take this opportunity to thank everyone at <a href="http://www.ordergroove.com" target="_blank"><img src="http://www.ordergroove.com/sites/all/themes/order_groove/ordergroove_logo.png" width="100"/></a> for allowing us the time to work on open sourcing this project. Without their support, this project would not exist.
