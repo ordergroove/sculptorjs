@@ -11,7 +11,42 @@ controls and then feeding the user interaction back to those native elements.
 It is not at this point in time intended as your go-to for cross-browser styling of all native html elements.
 It is not a jack of all trades and will only style drop-downs that it is specifically told to style.
 
-# Example Usage in a Non-NPM Project
+# Installation Instructions
+
+Sculptor JS can be installed using NPM or by cloning the repository and including the compiled js file in your website.
+
+# NPM
+
+First you have to install the tool itself (which comes bundled with dependencies)
+````
+npm install sculptorjs
+````
+
+### Javascript Example
+``` javascript
+// Just a closure
+(function (w, doc) {
+    "use strict"
+    var myAgeSelector,
+        sculptor = require("sculptorjs"); // browserify require of sculptorjs
+
+    // On window load, get the select element that I would like to style and pass it into sculptor
+    w.onload = function () {
+        var myAgeSelector = doc.getElementById("age-selector");
+        sculptor.init([myAgeSelector]); // Notice that an array is required even for a single element - [myAgeSelector]
+    }
+
+}(window, document));
+```
+
+# Non-NPM
+
+First you have to clone the repo
+````
+git clone git@github.com:ordergroove/sculptorjs.git
+````
+
+## Example Usage in a NPM Project
 
 ### HTML
 ``` html
@@ -47,35 +82,6 @@ It is not a jack of all trades and will only style drop-downs that it is specifi
 
 }(window, document));
 ```
-
-
-# Example Usage in a NPM Project
-
-### Javascript
-``` javascript
-// Just a closure
-(function (w, doc) {
-    "use strict"
-    var myAgeSelector,
-        sculptor = require("sculptorjs"); // browserify require of sculptorjs
-
-    // On window load, get the select element that I would like to style and pass it into sculptor
-    w.onload = function () {
-        var myAgeSelector = doc.getElementById("age-selector");
-        sculptor.init([myAgeSelector]); // Notice that an array is required even for a single element - [myAgeSelector]
-    }
-
-}(window, document));
-```
-
-# Installation Instructions
-
-## NPM
-
-First you have to install the tool itself (which comes bundled with dependencies)
-````
-npm install sculptorjs
-````
 
 ## Required Base CSS
 After Sculptor JS is installed, please reference the base css in your page. This can be as simple as copy/pasting
