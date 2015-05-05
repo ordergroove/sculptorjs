@@ -17,7 +17,7 @@ Sculptor JS can be installed using NPM or by cloning the repository and includin
 
 # NPM
 
-First you have to install the tool itself (which comes bundled with dependencies)
+First you have to install the tool itself (which comes bundled with [pocket-dom](https://github.com/ordergroove/dom))
 ````
 npm install sculptorjs
 ````
@@ -92,4 +92,7 @@ NOTE: If you're running with LESS then please feel free to @import "node_modules
 ## Make Sure It's Working
 Load up your HTML page in your favorite browser and you should no longer be seeing the native select elements
 but their Sculptor JS counterparts.
+
+## Issues
+We love feedback! If you run into any issues while installing or using this project, please create a new issue [here](https://github.com/ordergroove/sculptorjs/issues). If the issue is related to a specific browser(s), then please be sure to leave the browser information in the issue description.
 
