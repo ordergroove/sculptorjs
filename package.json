@@ -2,7 +2,7 @@
   "title": "Sculptor",
   "name": "sculptorjs",
   "author": "OrderGroove Developers",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdowns with standard CSS",
   "private": false,
   "copyright": "2015",
