@@ -11,7 +11,28 @@ controls and then feeding the user interaction back to those native elements.
 It is not at this point in time intended as your go-to for cross-browser styling of all native html elements.
 It is not a jack of all trades and will only style drop-downs that it is specifically told to style.
 
-## Example Usage in a Non-NPM Project
+# Example Usage in a Non-NPM Project
+
+### HTML
+``` html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Page</title>
+        <!-- Include Sculptor JS and Base CSS files -->
+        <script src="node_modules/sculptorjs/dist/sculptor.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="node_modules/sculptor/dist/sculptor.css" type="text/css"/>
+    </head>
+    <body>
+        <select id="age-selector" name="age">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+        </select>
+    </body>
+</html>
+    
+```
+### Javascript
 ``` javascript
 // Just a closure
 (function (w, doc) {
@@ -27,7 +48,10 @@ It is not a jack of all trades and will only style drop-downs that it is specifi
 }(window, document));
 ```
 
-## Example Usage in a NPM Project
+
+# Example Usage in a NPM Project
+
+### Javascript
 ``` javascript
 // Just a closure
 (function (w, doc) {
@@ -55,11 +79,11 @@ npm install sculptorjs
 
 ## Required Base CSS
 After Sculptor JS is installed, please reference the base css in your page. This can be as simple as copy/pasting
-the css in node_modules/sculptorjs/dist/sculptor.css to your existing stylesheets.
+the css in node_modules/sculptorjs/dist/sculptor.css to your existing stylesheets or referencing the file directly.
 
-If you are running with LESS then please feel free to import node_modules/sculptorjs/src/sculptor.less
+NOTE: If you're running with LESS then please feel free to @import "node_modules/sculptorjs/src/sculptor.less"
 
-## Final Test
+## Make Sure It's Working
 Load up your HTML page in your favorite browser and you should no longer be seeing the native select elements
 but their Sculptor JS counterparts.
 
