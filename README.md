@@ -1,13 +1,13 @@
 # Sculptor JS
 [![Build Status](https://travis-ci.org/ordergroove/sculptorjs.svg)](https://travis-ci.org/ordergroove/sculptorjs)
 
-## What Is Sculptor JS
+### What Is Sculptor JS
 Sculptor JS allows you to easily 'sculpt' beautiful html dropdowns that look the same across all browsers with just CSS.
 The library is very lightweight and is intended to be a quick way for you to get custom styled dropdowns on a page.
 This is accomplished with the age old practice of creating custom html elements on top of existing native select
 controls and then feeding the user interaction back to those native elements.
 
-## What Sculptor JS Is Not
+### What Sculptor JS Is Not
 It is not at this point in time intended as your go-to for cross-browser styling of all native html elements.
 It is not a jack of all trades and will only style drop-downs that it is specifically told to style.
 
@@ -15,7 +15,7 @@ It is not a jack of all trades and will only style drop-downs that it is specifi
 
 Sculptor JS can be installed using NPM or by cloning the repository and including the compiled js file in your website.
 
-# NPM
+## NPM
 
 First you have to install the tool itself (which comes bundled with [pocket-dom](https://github.com/ordergroove/dom))
 ````
@@ -39,16 +39,14 @@ npm install sculptorjs
 }(window, document));
 ```
 
-# Non-NPM
+## Non-NPM
 
 First you have to clone the repo
 ````
 git clone git@github.com:ordergroove/sculptorjs.git
 ````
 
-## Example Usage in a NPM Project
-
-### HTML
+After cloning, you can use the compiled sculptor.js file and CSS in your website like this
 ``` html
 <!DOCTYPE html>
 <html>
@@ -67,7 +65,6 @@ git clone git@github.com:ordergroove/sculptorjs.git
 </html>
     
 ```
-### Javascript
 ``` javascript
 // Just a closure
 (function (w, doc) {
