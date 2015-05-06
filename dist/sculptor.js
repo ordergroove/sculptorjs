@@ -1,4 +1,4 @@
-// sculptor - v1.0.1 - MIT License
+// sculptor - v1.0.6 - MIT License
 // Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdowns with standard CSS
 // 2015 (c) OrderGroove Developers
 
@@ -23,7 +23,7 @@
             len = select.length;
 
         // starts only if select has options
-        if (len > 1) {
+        if (len > 0) {
             // generate element
             customElement = doc.createElement('div');
             dom.addClass(customElement, 'sculptor-dropdown');
