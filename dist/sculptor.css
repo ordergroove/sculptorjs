@@ -1,6 +1,14 @@
+.sculptor-dropdown-border {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+}
 .sculptor-dropdown {
-  border-style: solid;
-  border-width: 1px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
   cursor: pointer;
   display: inline-block;
   padding: 7px 15px 7px 5px;
@@ -12,11 +20,11 @@
   border-width: 1px;
   display: none;
   list-style: none;
-  left: -1px;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  top: 100%;
+  left: -1px;
+  top: -200%;
   width: inherit;
   z-index: 1;
 }
