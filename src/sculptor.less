@@ -1,7 +1,8 @@
 // Default Configuration
-@display-arrow: true; // Options: true, false
-@open-direction: bottom; // Option: bottom, top, right, left
-@options-valign: top; // Option: bottom, middle, top
+@default: true;
+@display-arrow: @default; // Options: true, false
+@open-direction: @default;  // Option: bottom, top, right, left
+@open-options-align-to: @default; // Option: bottom, middle, top
 
 // Select container
 .sculptor-dropdown-border {
@@ -29,35 +30,93 @@
         position: absolute;
 
         // Default
-        & when (@open-direction = bottom) {
+        & when (@open-direction) {
             left: -1px;
-
-            & when (@options-valign = bottom) {
+            .default() {
                 top: 100%;
             }
 
-            & when (@options-valign = middle) {
-                top: -100%;
+            & when (@open-options-align-to) {
+                .default();
+            }
+            & when (@open-options-align-to = bottom) {
+                .default();
             }
 
-            & when (@options-valign = top) {
+            & when (@open-options-align-to = middle) {
+                top: -100%;
+            }
+            & when (@open-options-align-to = top) {
                 top: -200%; // TO DO: Make this work properly
             }
         }
 
         & when (@open-direction = top) {
             left: -1px;
-            bottom: 100%;
+
+            .default() {
+                bottom: 100%;
+            }
+
+            & when (@open-options-align-to) {
+                .default();
+            }
+            & when (@open-options-align-to = top) {
+                .default();
+            }
+            & when (@open-options-align-to = middle) {
+                bottom: -100%;
+            }
+
+            & when (@open-options-align-to = bottom) {
+                bottom: -200%; // TO DO: Make this work properly
+            }
         }
 
         & when (@open-direction = right) {
             left: 100%;
-            top: 0px;
+
+            .default() {
+                top: 0px;
+            }
+
+            & when (@open-options-align-to) {
+                .default();
+            }
+            & when (@open-options-align-to = top) {
+                .default();
+            }
+
+            & when (@open-options-align-to = middle) {
+                top: -50%;
+            }
+
+            & when (@open-options-align-to = bottom) {
+                bottom: 0px;
+            }
         }
 
         & when (@open-direction = left) {
             right: 100%;
-            top: 0px;
+
+            .default() {
+                top: 0px;
+            }
+
+            & when (@open-options-align-to) {
+                .default();
+            }
+            & when (@open-options-align-to = top) {
+                .default();
+            }
+
+            & when (@open-options-align-to = middle) {
+                top: -50%;
+            }
+
+            & when (@open-options-align-to = bottom) {
+                bottom: 0px;
+            }
         }
 
         width: inherit;
@@ -74,7 +133,7 @@
     }
 
     &:after {
-        & when (@display-arrow = false) {
+        & when not (@display-arrow) {
             display: none;
         }
         content: '\25BC';

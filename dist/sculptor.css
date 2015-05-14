@@ -23,8 +23,8 @@
   margin: 0px;
   padding: 0px;
   position: absolute;
-  left: -1px;
-  top: -200%;
+  left: 100%;
+  top: -50%;
   width: inherit;
   z-index: 1;
 }
