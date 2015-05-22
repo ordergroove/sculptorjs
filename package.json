@@ -1,0 +1,22 @@
+{
+  "name": "sculptorjs_site",
+  "title": "SculptorJS site",
+  "url": "http://ordergroove.github.io/sculptorjs",
+  "author": "Jeremias Menichelli",
+  "copyright": "2015",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ordergroove/sculptorjs.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-less": "^1.2.3",
+    "gulp-jshint": "^1.6.3",
+    "jshint-stylish": "^0.2.0"
+  }
+}
