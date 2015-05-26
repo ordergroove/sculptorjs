@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html %}
+        
+        <section class="download">
+            <div class="container">
+                <div class="row">
+                    <div class="column column-12">
+                        <a class="button download-button"
+                           href="https://github.com/ordergroove/sculptorjs/zipball/master">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="row">
+                    {% for feature in site.data.features limit: 3 %}
+                        <div class="column column-4">
+                            <h3>{{ feature.title }}</h3>
+                            <p>{{ feature.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="column column-12">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% include footer.html %}
+
+</body>
+
+</html>

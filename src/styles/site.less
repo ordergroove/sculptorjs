@@ -2,6 +2,220 @@
 @import '_mixins.less';
 @import '_normalize.less';
 @import '_layout.less';
-@import '_header.less';
-@import '_index.less';
 @import '_syntax.less';
+
+/* --- GENERAL --- */
+
+section.download {
+    background-color: @primary-color;
+    text-align: center;
+
+    .container {
+        padding-top: 0;
+    }
+}
+
+p {
+    line-height: 1.5em;
+}
+
+.button {
+    background-color: @dark-primary-color;
+    color: @light-text-color;
+    display: inline-block;
+    font: .85em;
+    letter-spacing: .05em;
+    margin: 0 auto;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+/* --- HEADER --- */
+
+header {
+    background-color: @primary-color;
+    color: @light-text-color;
+    text-align: center;
+    padding: 20px 0 0;
+}
+
+h1 {
+    font-size: 4em;
+    font-family: @shadow-font;
+    line-height: 1em;
+    margin: 0 0 10px;
+}
+
+.description {
+    color: @light-primary-color;
+}
+
+
+/* --- FEATURES SECTION --- */
+
+.features {
+    background-color: @accent-color;
+    color: @light-text-color;
+
+    h3 {
+        font-weight: 600;
+        font-size: 1.25em;
+        line-height: 1em;
+        margin: 0 0 7px;
+        text-transform: uppercase;
+    }
+}
+
+
+/* --- FOOTER --- */
+
+footer  {
+    background-color: @primary-color;
+
+    p {
+        color: @light-text-color;
+        margin: 0;
+        text-align: right;
+    }
+}
+
+/* --- SCULPTOR CUSTOM DROPDOWNS --- */
+
+.sculptor-dropdown {
+    font-size: .85em;
+    width: 200px;
+
+    &.custom-country-select {
+        background-color: #3b9fcf;
+        border-radius: 14px;
+        border-width: 0;
+        color: #ffffff;
+        text-transform: uppercase;
+        padding-left: 10px;
+        padding-right: 25px;
+
+        &:after {
+            right: 10px;
+        }
+        
+        &:after, &:before {
+            color: #fff;    
+        }
+
+        &.sculptor-dropdown-opened {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .sculptor-dropdown-options {
+            background-color: #3b9fcf;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border-width: 0;
+            left: 0;
+            color: #fff;
+            padding: 7px 0 12px;
+
+            li {
+                padding: 5px 10px;
+                transition: all .15s ease;
+
+                &:hover {
+                    background-color: #3b9fcf - #333333;
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+
+    &.custom-colors-select {
+        background-color: #eaeaea;
+        border-color: #c0c0c0;
+        border-width: 2px;
+        color: #808080;
+        font-weight: bold;
+        text-align: center;
+
+        &:after {
+            color: #808080;
+            content: '+';
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: transform .2s linear;
+            right: 7px;
+            top: 4px;
+        }
+
+        &.sculptor-dropdown-opened {
+
+            &:after {
+                transform: rotate(45deg);
+            }
+        }
+
+        .sculptor-dropdown-options {
+            background-color: #eaeaea;
+            border-color: inherit;
+            border-width: inherit;
+            left: -2px;
+            
+            li {
+                transition: all .2s ease;
+
+                &[data-value="disabled"] {
+                    cursor: not-allowed;
+                }
+
+                &:hover:not([data-value="disabled"]) {
+                    background-color: #808080;
+                    color: #eaeaea;
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+
+    &.custom-months-select {
+        background-color: #333333;
+        border-color: #333333;
+        color: #f1f2f4;
+        padding: 7px 7px 7px 25px;
+        text-align: right;
+
+        &:after {
+            background-color: #f1f2f4;
+            color: #333333;
+            left: 4px;
+            padding: 2px;
+            right: auto;
+            text-align: center;
+            top: 5px;
+            width: 20px;
+        }
+
+        .sculptor-dropdown-options {
+            background-color: #333333;
+            border-color: #333333;
+            color: #f1f2f4;
+
+            li {
+
+                &:hover {
+                    background-color: #555555;
+                    color: #e0e0e0;
+                }
+            }
+        }
+
+        &.sculptor-dropdown-opened {
+
+            &:after {
+                content: '▲';
+            }
+        }
+    }
+}
+

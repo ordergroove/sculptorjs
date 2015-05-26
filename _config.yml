@@ -4,4 +4,4 @@ description: "Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdo
 url: "http://ordergroove.github.com/sculptorjs" # the base hostname & protocol for your site
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet

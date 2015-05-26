@@ -21,6 +21,7 @@
     "laxcomma": true,
     "globals": {
         "window": true,
-        "document": true
+        "document": true,
+        "sculptor": true
     }
 }

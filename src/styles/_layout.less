@@ -1,5 +1,13 @@
-* {
+html {
     box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+
+    &:after, &:before {
+        box-sizing: inherit;
+    }
 }
 
 .column {
@@ -31,16 +39,22 @@
     .column {
         float: none;
         margin-top: @spacing;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
 .row {
     .clearfix();
+
+    &.inner-row {
+        margin-top: @spacing * 0.5;
+    }
 }
 
 .container {
     padding: @spacing;
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 950px;
     width: 100%;
 }
