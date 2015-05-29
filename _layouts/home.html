@@ -13,6 +13,7 @@
                     <div class="column column-12">
                         <a class="button download-button"
                            href="https://github.com/ordergroove/sculptorjs/zipball/master">
+                            <i class="icon-download-alt"></i>
                             Download
                         </a>
                     </div>
@@ -25,7 +26,11 @@
                 <div class="row">
                     {% for feature in site.data.features limit: 3 %}
                         <div class="column column-4">
-                            <h3>{{ feature.title }}</h3>
+                            <h3>
+                                {% if feature.icon %}
+                                    <i class="icon-{{ feature.icon }}"></i>
+                                {% endif %}
+                                {{ feature.title }}</h3>
                             <p>{{ feature.description }}</p>
                         </div>
                     {% endfor %}

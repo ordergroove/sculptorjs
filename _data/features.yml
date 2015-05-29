@@ -1,6 +1,9 @@
-- title: Feature 1
-  description: Lorem ipsum dolor sit amet, at pro facer eloquentiam, mei ad decore pericula vulputate. Ea vix postea vivendum conceptam, rebum doctus no ius.
-- title: Feature 2
-  description: Lorem ipsum dolor sit amet, at pro facer eloquentiam, mei ad decore pericula vulputate. Ea vix postea vivendum conceptam, rebum doctus no ius.
-- title: Feature 3
-  description: Lorem ipsum dolor sit amet, at pro facer eloquentiam, mei ad decore pericula vulputate. Ea vix postea vivendum conceptam, rebum doctus no ius.
+- title: Ready to use
+  description: Just initialize the script passing the collection of select elements and sculptor will take care of everything
+  icon: code
+- title: Easy to style
+  icon: magic
+  description: Using the project's stylesheet as base you can override any style of any element to make the custom dropdown look as you want
+- title: Syncing
+  description: The original select element will still change its value and any event attached to it will fire every time the custom element is modified
+  icon: arrows-ccw

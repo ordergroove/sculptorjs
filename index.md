@@ -2,35 +2,59 @@
 layout: home
 ---
 
+<div id="install"></div>
+
 ## Install
 
-Lorem ipsum dolor sit amet, at pro facer eloquentiam, mei ad decore pericula vulputate. Ea vix postea vivendum conceptam, rebum doctus no ius.
+One of the ways you have to start using **sculptorjs** include the minimized distribution file in your project like this:
+
+```html
+<script src="/assets/js/sculptor.min.js"></script>
+```
 
 ### npm 
+
+If you're using **npm packages** in your build process you can also install it:
 
 ```bash
 npm install sculptorjs --save-dev
 ```
 
+<div id="use"></div>
+
 ## Use
 
+As we know select elements are really hard to style, mostly if you want them to look almost identical in all browsers. This library will make things easier to you in this area.
+
+The first thing you'll need to do is call the **init** method and pass a collection of select elements:
+
+```js
+sculptor.init(document.getElementsByClassName('costum-select'));
+```
+
+If you have just one element you can do this:
+
+```js
+sculptor.init([ document.getElementById('colors') ]);
+```
+
+The script will build a new element made with common HTML tags and hide the original select:
+
 ```html
-<select name="colors" id="colors">
-    <option disabled>Choose a color</option>
+<select id="colors" class="custom-select colors">
+    <option disabled>choose a color</option>
     <option value="#0000f9">blue</option>
-    <option value="#00f900">green</option>
+    <option value="#00f900" selected>green</option>
     <option value="#f90000">red</option>
 </select>
 ```
 
-```js
-sculptor.init(document.getElementById('colors'));
-```
+And this will now appear in your site:
 
 ```html
-<div class="sculptor-dropdown">
+<div data-value="green" class="sculptor-dropdown custom-select colors">
     <ul class="sculptor-dropdown-options">
-        <li data-value="disabled"></li>
+        <li data-value="disabled">choose a color</li>
         <li data-value="#0000f9">blue</li>
         <li data-value="#00f900">green</li>
         <li data-value="#f90000">red</li>
@@ -38,9 +62,58 @@ sculptor.init(document.getElementById('colors'));
 </div>
 ```
 
-**.sculptor-dropdown:before** pseudo-class contains the current value of the dropdown.
+As you see **sculptor** took care of a couple of extra things for you. All the classes you have initially in your select element were added to the sculptor one so you can identify it and make custom styling on it.
+
+Every time the element is clicked a class called **sculptor-dropdown-opened** will toggle to indicate its state.
+
+Also the value that was selected by default in the select is the initial value in the sculptor element and the disable one is there too.
+
+### Pseudo elements
+
+**.sculptor-dropdown:before** contains the current value that is being shown in the dropdown.
 
 **.sculptor-dropdown:after** holds the symbol which you can modify changing the **content** CSS property of it.
+
+
+<div id="styling"></div>
+
+## Styling
+
+In the distribution folder you get a CSS file that you can import in your style sheet where you can add your own rules to modify how the elements look.
+
+```css
+@import 'sculptor.css';
+```
+
+Out of the box, **sculptor** takes care of all the styles the element needs to work and look like a select element. The only thing you must add to it is a width so the content you want has enough space. Then the rest of the style you can override depend on the aspect of the custom dropown you're trying to build.
+
+Each element generated will have its class so you can style.
+
+```css
+.sculptor-dropdown {
+    /* styles for the main element */
+}
+
+.sculptor-dropdown.sculptor-dropdown-opened {
+    /* styles for the main element 
+       when the options are shown */
+}
+
+.sculptor-dropdown:after {
+    /* styles for the arrow */
+}
+
+.sculptor-dropdown-options {
+    /* styles for the options list */
+}
+
+.sculptor-dropdown.sculptor-dropdown-opened .sculptor-dropdown-options {
+    /* styles for the options list 
+       when the options are shown */
+}
+```
+
+<div id="examples"></div>
 
 ## Examples
 
@@ -118,3 +191,14 @@ sculptor.init(document.getElementById('colors'));
         </select>
     </div>
 </div>
+
+<nav>
+    <div class="container">
+        <div class="row">
+            <a class="nav-link" href="#install">Install</a>
+            <a class="nav-link" href="#use">Use</a>
+            <a class="nav-link" href="#styling">Styling</a>
+            <a class="nav-link" href="#examples">Examples</a>
+        </div>
+    </div>
+</nav>
