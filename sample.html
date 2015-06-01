@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select name="species" id="custom-species">
+        <option value="fish">fish</option>
+        <option value="bird">bird</option>
+        <option value="reptile">reptile</option>
+        <option value="mammal">mammal</option>
+    </select>
+    <link rel="stylesheet" href="sculptores/sculptor-sample.css">
+    <script src="dist/sculptor.min.js"></script>
+    <script>
+        window.onload = function() {
+            sculptor.init([ document.getElementById('custom-species') ]);
+        };
+    </script>
+</body>
+</html>

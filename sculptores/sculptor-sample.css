@@ -1,21 +1,19 @@
 .sculptor-dropdown {
-  background-color: #ffffff;
+  background-color: rebeccapurple;
   border-color: #000000;
   border-style: solid;
-  border-width: 1px;
-  border-radius: 0;
+  border-width: 0;
+  border-radius: 5px;
   cursor: pointer;
   display: inline-block;
   padding: 7px 15px 7px 5px;
   position: relative;
 }
 .sculptor-dropdown .sculptor-dropdown-options {
-  background-color: #ffffff;
+  background-color: rebeccapurple;
   border-color: #000000;
   border-style: solid;
-  border-width: 1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-width: 0;
   box-sizing: content-box;
   display: none;
   list-style: none;
@@ -24,8 +22,12 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-  left: -1px;
-  top: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  left: 100%;
+  top: 0;
 }
 .sculptor-dropdown .sculptor-dropdown-options li {
   list-style-type: none;
@@ -40,9 +42,12 @@
   right: 2px;
 }
 .sculptor-dropdown.sculptor-dropdown-opened {
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 .sculptor-dropdown.sculptor-dropdown-opened .sculptor-dropdown-options {
   display: block;
+}
+.sculptor-dropdown {
+  color: white;
 }

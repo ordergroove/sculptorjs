@@ -2,6 +2,7 @@
     'use strict';
 
     var gulp = require('gulp'),
+        gutil = require('gulp-util'),
         less = require('gulp-less'),
         rename = require('gulp-rename'),
         concat = require('gulp-concat-util'),
@@ -24,8 +25,13 @@
         src: './src/' + projectName + '.js',
         dist: './dist/' + projectName + '.js',
         spec: './test/' + projectName + '.spec.js',
-        output: './dist'
+        output: './dist',
+        sculptores: gutil.env.sculpt ? './sculptores' : './dist'
     };
+
+    if (gutil.env.sculpt) {
+        gutil.log(gutil.colors.magenta('building custom version: ' + gutil.env.sculpt ));
+    }
 
     gulp.task('hint', function() {
         return gulp.src([ paths.src, paths.spec ])
@@ -52,7 +58,7 @@
             })
             .bundle()
             .pipe(source(projectName + '.js'))
-            .pipe(gulp.dest('./dist/'))
+            .pipe(gulp.dest('./dist/'));
     });
 
     gulp.task('test', [ 'browserify:test' ], function() {
@@ -63,7 +69,9 @@
     gulp.task('less', function() {
         return gulp.src('./src/' + projectName + '.less')
             .pipe(less())
-            .pipe(gulp.dest(paths.output));
+            // if sculpt flag defined rename with custom flag
+            .pipe(gutil.env.sculpt ? rename({ suffix: '-' + gutil.env.sculpt }) : gutil.noop())
+            .pipe(gulp.dest(paths.sculptores));
     });
 
     gulp.task('build', [ 'browserify:src', 'less' ], function() {
