@@ -26,7 +26,7 @@
         dist: './dist/' + projectName + '.js',
         spec: './test/' + projectName + '.spec.js',
         output: './dist',
-        sculptores: gutil.env.sculpt ? './sculptores' : './dist'
+        lessOutput: gutil.env.sculpt ? './sculptures' : './dist'
     };
 
     if (gutil.env.sculpt) {
@@ -71,7 +71,7 @@
             .pipe(less())
             // if sculpt flag defined rename with custom flag
             .pipe(gutil.env.sculpt ? rename({ suffix: '-' + gutil.env.sculpt }) : gutil.noop())
-            .pipe(gulp.dest(paths.sculptores));
+            .pipe(gulp.dest(paths.lessOutput));
     });
 
     gulp.task('build', [ 'browserify:src', 'less' ], function() {
