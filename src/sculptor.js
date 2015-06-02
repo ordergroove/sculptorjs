@@ -132,7 +132,7 @@
                 // insert custom element and bind events
                 select.parentNode.insertBefore(custom, select);
                 dom.addEvent(custom, 'click', _toggleDropdown);
-                dom.addEvent('mouseevent', _closeDropdown);
+                dom.addEvent(custom, 'mouseleave', _closeDropdown);
             }
         }
 
