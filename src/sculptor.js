@@ -51,7 +51,7 @@
 
                 // emulate change event and append element
                 dom.addEvent(customOption, 'click', _onValueChange);
-                dom.$('ul', customElement)[0].appendChild(customOption);
+                ul.appendChild(customOption);
             }
 
             return customElement;
@@ -81,6 +81,11 @@
 
         custom.setAttribute('data-value', target.innerHTML);
         dom.removeClass(custom, 'sculptor-dropdown-opened');
+    }
+
+    function _closeDropdown() {
+        var me = this;
+        dom.removeClass(me, 'sculptor-dropdown-opened');
     }
 
     /**
@@ -124,9 +129,10 @@
                     dom.addClass(custom, select.className.split(/\s+/));
                 }
 
-                // insert custom element
+                // insert custom element and bind events
                 select.parentNode.insertBefore(custom, select);
                 dom.addEvent(custom, 'click', _toggleDropdown);
+                dom.addEvent('mouseevent', _closeDropdown);
             }
         }
 

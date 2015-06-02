@@ -19,6 +19,7 @@
     "maxlen": 125,
     "eqnull": true,
     "laxcomma": true,
+    "validthis": true,
     "globals": {
         "window": true,
         "document": true,
