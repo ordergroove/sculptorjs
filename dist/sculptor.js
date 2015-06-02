@@ -103,12 +103,15 @@
         }
     }
 
+    /**
+     * control key events on custom element
+     * @method _keyNavigation
+     * @parameter {event} e
+     */
     function _keyNavigation(e) {
         var el = dom.getEventTarget(e),
             currentValue = el.getAttribute('data-value'),
             currentOption = dom.$('[data-value="' + currentValue + '"]', el)[0];
-
-        window.console.log('key down fired!', e);
 
         if (e.which === 40 && currentOption.nextSibling) {
             dom.trigger(currentOption.nextSibling, 'click');
