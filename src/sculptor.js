@@ -21,6 +21,7 @@
         if (len > 0) {
             // generate element
             customElement = doc.createElement('div');
+            customElement.setAttribute('tabindex', '0');
             dom.addClass(customElement, 'sculptor-dropdown');
 
             ul = document.createElement('ul');
@@ -107,6 +108,25 @@
     }
 
     /**
+     * control key events on custom element
+     * @method _keyNavigation
+     * @parameter {event} e
+     */
+    function _keyNavigation(e) {
+        var el = dom.getEventTarget(e),
+            currentValue = el.getAttribute('data-value'),
+            currentOption = dom.$('[data-value="' + currentValue + '"]', el)[0];
+
+        if (e.which === 40 && currentOption.nextSibling) {
+            dom.trigger(currentOption.nextSibling, 'click');
+        }
+
+        if (e.which === 38 && currentOption.previousSibling) {
+            dom.trigger(currentOption.previousSibling, 'click');
+        }
+    }
+
+    /**
      * replaces select for custom ones
      * @method _initialize
      * @params {Array|NodeList} elements
@@ -137,6 +157,7 @@
                 select.parentNode.insertBefore(custom, select);
                 dom.addEvent(custom, 'click', _toggleDropdown);
                 dom.addEvent(custom, 'mouseleave', _closeDropdown);
+                dom.addEvent(custom, 'keydown', _keyNavigation);
             }
         }
 
