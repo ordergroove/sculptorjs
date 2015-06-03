@@ -83,6 +83,10 @@
         dom.removeClass(custom, 'sculptor-dropdown-opened');
     }
 
+    /**
+     * closes custom dropdown removing opened class
+     * @method _closeDropdown
+     */
     function _closeDropdown() {
         var me = this;
         dom.removeClass(me, 'sculptor-dropdown-opened');
