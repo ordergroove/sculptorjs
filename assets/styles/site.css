@@ -691,7 +691,7 @@ code {
 /* '' */
 /* --- GENERAL --- */
 section.download {
-  background-color: #2a003d;
+  background-color: #a3a1cf;
   text-align: center;
 }
 section.download .container {
@@ -701,7 +701,7 @@ p {
   line-height: 1.5em;
 }
 .button {
-  background-color: #19002c;
+  background-color: #26255e;
   border-radius: 6px;
   color: #ffffff;
   display: inline-block;
@@ -714,21 +714,26 @@ p {
   transition: all .1s linear;
 }
 .button:hover {
-  background-color: #4b215e;
+  background-color: #2e2d74;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 /* --- NAV --- */
 nav {
-  background-color: #2a003d;
+  background-color: #a3a1cf;
   text-align: right;
   position: fixed;
   top: 0;
   left: 0;
+  padding: 25px 30px;
   width: 100%;
+  transition: all .25s linear;
 }
 nav .container {
   padding-bottom: 25px;
   padding-top: 25px;
+}
+.nav-fixed {
+  box-shadow: 1px 0 3px 1px rgba(0, 0, 0, 0.5);
 }
 .nav-link {
   color: #ffffff;
@@ -743,8 +748,8 @@ nav .container {
 }
 /* --- HEADER --- */
 header {
-  background-color: #2a003d;
-  color: #ffffff;
+  background-color: #a3a1cf;
+  color: #26255e;
   text-align: center;
   padding: 70px 0 0;
 }
@@ -753,13 +758,21 @@ h1 {
   font-family: 'Shadows Into Light', Helvetica, Arial, sans-serif;
   line-height: 1em;
   margin: 0 0 10px;
+  position: relative;
+}
+h1 span {
+  position: absolute;
+  left: -99999em;
+}
+h1 img {
+  width: 300px;
 }
 .description {
-  color: #a97fbc;
+  color: #a3a1cf;
 }
 /* --- FEATURES SECTION --- */
 .features {
-  background-color: #9e9e9e;
+  background-color: #26255e;
   color: #ffffff;
   text-align: center;
 }

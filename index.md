@@ -193,12 +193,11 @@ Each element generated will have its class so you can style.
 </div>
 
 <nav>
-    <div class="container">
-        <div class="row">
-            <a class="nav-link" href="#install">Install</a>
-            <a class="nav-link" href="#use">Use</a>
-            <a class="nav-link" href="#styling">Styling</a>
-            <a class="nav-link" href="#examples">Examples</a>
-        </div>
+    <div class="row">
+        <img src="/assets/img/logo_notitle.png" alt="">
+        <a class="nav-link" href="#install">Install</a>
+        <a class="nav-link" href="#use">Use</a>
+        <a class="nav-link" href="#styling">Styling</a>
+        <a class="nav-link" href="#examples">Examples</a>
     </div>
 </nav>

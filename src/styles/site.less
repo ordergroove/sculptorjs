@@ -8,7 +8,7 @@
 /* --- GENERAL --- */
 
 section.download {
-    background-color: @primary-color;
+    background-color: @light-primary-color;
     text-align: center;
 
     .container {
@@ -41,17 +41,23 @@ p {
 
 /* --- NAV --- */
 nav {
-    background-color: @primary-color;
+    background-color: @light-primary-color;
     text-align: right;
     position: fixed;
     top: 0;
     left: 0;
+    padding: 25px 30px;
     width: 100%;
+    transition: all .25s linear;
 
     .container {
         padding-bottom: 25px;
         padding-top: 25px;
     }
+}
+
+.nav-fixed {
+    box-shadow: 1px 0 3px 1px rgba(0, 0, 0, .5);
 }
 
 .nav-link {
@@ -72,8 +78,8 @@ nav {
 /* --- HEADER --- */
 
 header {
-    background-color: @primary-color;
-    color: @light-text-color;
+    background-color: @light-primary-color;
+    color: @dark-primary-color;
     text-align: center;
     padding: 70px 0 0;
 }
@@ -83,6 +89,16 @@ h1 {
     font-family: @shadow-font;
     line-height: 1em;
     margin: 0 0 10px;
+    position: relative;
+
+    span {
+        position: absolute;
+        left: -99999em;
+    }
+
+    img {
+        width: 300px;
+    }
 }
 
 .description {
@@ -93,7 +109,7 @@ h1 {
 /* --- FEATURES SECTION --- */
 
 .features {
-    background-color: @accent-color;
+    background-color: @dark-primary-color;
     color: @light-text-color;
     text-align: center;
 
