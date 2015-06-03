@@ -26,6 +26,7 @@
         if (len > 0) {
             // generate element
             customElement = doc.createElement('div');
+            customElement.setAttribute('tabindex', '0');
             dom.addClass(customElement, 'sculptor-dropdown');
 
             ul = document.createElement('ul');
@@ -56,7 +57,7 @@
 
                 // emulate change event and append element
                 dom.addEvent(customOption, 'click', _onValueChange);
-                dom.$('ul', customElement)[0].appendChild(customOption);
+                ul.appendChild(customOption);
             }
 
             return customElement;
@@ -89,6 +90,15 @@
     }
 
     /**
+     * closes custom dropdown removing opened class
+     * @method _closeDropdown
+     */
+    function _closeDropdown() {
+        var me = this;
+        dom.removeClass(me, 'sculptor-dropdown-opened');
+    }
+
+    /**
      * toggles special open class on select element
      * @method _toggleDropdown
      */
@@ -99,6 +109,25 @@
             dom.removeClass(target, 'sculptor-dropdown-opened');
         } else {
             dom.addClass(target, 'sculptor-dropdown-opened');
+        }
+    }
+
+    /**
+     * control key events on custom element
+     * @method _keyNavigation
+     * @parameter {event} e
+     */
+    function _keyNavigation(e) {
+        var el = dom.getEventTarget(e),
+            currentValue = el.getAttribute('data-value'),
+            currentOption = dom.$('[data-value="' + currentValue + '"]', el)[0];
+
+        if (e.which === 40 && currentOption.nextSibling) {
+            dom.trigger(currentOption.nextSibling, 'click');
+        }
+
+        if (e.which === 38 && currentOption.previousSibling) {
+            dom.trigger(currentOption.previousSibling, 'click');
         }
     }
 
@@ -129,9 +158,11 @@
                     dom.addClass(custom, select.className.split(/\s+/));
                 }
 
-                // insert custom element
+                // insert custom element and bind events
                 select.parentNode.insertBefore(custom, select);
                 dom.addEvent(custom, 'click', _toggleDropdown);
+                dom.addEvent(custom, 'mouseleave', _closeDropdown);
+                dom.addEvent(custom, 'keydown', _keyNavigation);
             }
         }
 
