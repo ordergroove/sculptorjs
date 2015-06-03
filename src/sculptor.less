@@ -1,25 +1,73 @@
+@import 'sculptor_variables.less';
+
 .sculptor-dropdown {
+    background-color: @background-color;
+    border-color: @border-color;
     border-style: solid;
-    border-width: 1px;
+    border-width: @border-width;
+    border-radius: @rounded;
     cursor: pointer;
     display: inline-block;
     padding: 7px 15px 7px 5px;
     position: relative;
 
     .sculptor-dropdown-options {
-        background: #ffffff;
+        background-color: @background-color;
+        border-color: @border-color;
         border-style: solid;
-        border-width: 1px;
+        border-width: @border-width;
         box-sizing: content-box;
         display: none;
         list-style: none;
-        left: -1px;
         margin: 0px;
         padding: 0px;
         position: absolute;
-        top: 100%;
         width: 100%;
         z-index: 1;
+
+        &when (@options-position = bottom) {
+            // border radius
+            border-bottom-left-radius: @rounded;
+            border-bottom-right-radius: @rounded;
+            
+            // position
+            left: @border-width * -1;
+            top: 100%;
+        }
+
+        &when (@options-position = top) {
+            // border radius
+            border-top-left-radius: @rounded;
+            border-top-right-radius: @rounded;
+            
+            // position
+            left: @border-width * -1;
+            bottom: 100%;
+        }
+
+        &when (@options-position = left) {
+            // border radius
+            border-top-left-radius: @rounded;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: @rounded;
+            border-bottom-right-radius: @rounded;
+
+            // position
+            right: 100%;
+            top: @border-width * -1;
+        }
+
+        &when (@options-position = right) {
+            // border radius
+            border-top-left-radius: 0;
+            border-top-right-radius: @rounded;
+            border-bottom-left-radius: @rounded;
+            border-bottom-right-radius: @rounded;
+
+            // position
+            left: 100%;
+            top: @border-width * -1;
+        }
 
         li {
             list-style-type: none;
@@ -32,15 +80,40 @@
     }
 
     &:after {
-        content: '\25BC';
+        content: @symbol;
         position: absolute;
         right: 2px;
     }
 
     &.sculptor-dropdown-opened {
+        &when (@options-position = bottom) {
+            // border radius
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &when (@options-position = top) {
+            // border radius
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        &when (@options-position = left) {
+            //border radius
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+
+        &when (@options-position = right) {
+            //border radius
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+        }
 
         .sculptor-dropdown-options {
             display: block;
         }
     }
 }
+
+@import 'sculptor_custom.less';
