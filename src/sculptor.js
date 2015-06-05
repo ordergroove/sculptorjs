@@ -64,13 +64,11 @@
      * @method _onValueChange
      */
     function _onValueChange(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
         var target = dom.getEventTarget(e),
             value = target.getAttribute('data-value'),
             select = target.__originalDropdown__,
-            custom = target.__customDropdown__;
+            custom = target.__customDropdown__,
+            selected = dom.$('.sculptor-option-selected', custom)[0];
 
         if (value === 'disabled') {
             return;
@@ -80,8 +78,17 @@
         select.value = value;
         dom.trigger(select, 'change');
 
+        // remove selected class to previous option element
+        if (selected) {
+            dom.removeClass(selected, 'sculptor-option-selected');
+        }
+
         custom.setAttribute('data-value', target.innerHTML);
+        dom.addClass(target, 'sculptor-option-selected');
         dom.removeClass(custom, 'sculptor-dropdown-opened');
+
+        // cancel bubble in all browsers
+        return;
     }
 
     /**
@@ -89,6 +96,7 @@
      * @method _closeDropdown
      */
     function _closeDropdown() {
+        /* jshint validthis:true */
         var me = this;
         dom.removeClass(me, 'sculptor-dropdown-opened');
     }
@@ -114,8 +122,7 @@
      */
     function _keyNavigation(e) {
         var el = dom.getEventTarget(e),
-            currentValue = el.getAttribute('data-value'),
-            currentOption = dom.$('[data-value="' + currentValue + '"]', el)[0];
+            currentOption = dom.$('.sculptor-option-selected', el)[0] || dom.$('li', el)[0];
 
         if (e.which === 40 && currentOption.nextSibling) {
             dom.trigger(currentOption.nextSibling, 'click');
@@ -124,6 +131,9 @@
         if (e.which === 38 && currentOption.previousSibling) {
             dom.trigger(currentOption.previousSibling, 'click');
         }
+
+        // cancel bubble in all browsers
+        return;
     }
 
     /**
@@ -143,10 +153,9 @@
 
             custom = _buildElement(select);
 
-            // hide original select
-            dom.setCssProperty(select, 'display', 'none', 'important');
-
             if (custom) {
+                // hide original select
+                dom.setCssProperty(select, 'display', 'none', 'important');
 
                 // get classes from original select
                 if (select.className !== '') {
@@ -155,9 +164,18 @@
 
                 // insert custom element and bind events
                 select.parentNode.insertBefore(custom, select);
+
                 dom.addEvent(custom, 'click', _toggleDropdown);
                 dom.addEvent(custom, 'mouseleave', _closeDropdown);
                 dom.addEvent(custom, 'keydown', _keyNavigation);
+
+                // set selected class
+                var defaultOptionSelector = select.value ? '[data-value="' + select.value + '"]' : 'li',
+                    defaultOption = dom.$(defaultOptionSelector, custom)[0];
+
+                if (defaultOption) {
+                    dom.addClass(defaultOption, 'sculptor-option-selected');
+                }
             }
         }
 
