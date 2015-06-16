@@ -1,4 +1,4 @@
-// sculptor - v1.1.0 - MIT License
+// sculptor - v1.1.1 - MIT License
 // Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdowns with standard CSS
 // 2015 (c) OrderGroove Developers
 
