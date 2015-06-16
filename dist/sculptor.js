@@ -1,4 +1,4 @@
-// sculptor - v1.0.6 - MIT License
+// sculptor - v1.1.0 - MIT License
 // Allows you to easily 'sculpt' beautiful, cross-browser HTML dropdowns with standard CSS
 // 2015 (c) OrderGroove Developers
 
@@ -14,7 +14,6 @@
      * @params {node} select
      * @returns {node|null}
      */
-
     function _buildElement(select) {
         var customElement,
             option,
@@ -39,6 +38,7 @@
                 option = select[i];
 
                 customOption = doc.createElement('li');
+                dom.addClass(customOption, 'sculptor-option');
                 // put text content in custom option
                 customOption.innerHTML = option.innerHTML;
 
@@ -91,9 +91,6 @@
         custom.setAttribute('data-value', target.innerHTML);
         dom.addClass(target, 'sculptor-option-selected');
         dom.removeClass(custom, 'sculptor-dropdown-opened');
-
-        // cancel bubble in all browsers
-        return;
     }
 
     /**
@@ -113,6 +110,11 @@
     function _toggleDropdown(e) {
         var target = dom.getEventTarget(e);
 
+        // avoid toggle class over option elements
+        if (target.__customDropdown__) {
+            return;
+        }
+
         if (dom.hasClass(target, 'sculptor-dropdown-opened')) {
             dom.removeClass(target, 'sculptor-dropdown-opened');
         } else {
@@ -126,6 +128,13 @@
      * @parameter {event} e
      */
     function _keyNavigation(e) {
+        // prevent window key propagation if
+        // up arrow or down arrow are pressed
+        if (e.which === 40 || e.which === 38) {
+            dom.preventDefault(e);
+            dom.stopPropagation(e);
+        }
+
         var el = dom.getEventTarget(e),
             currentOption = dom.$('.sculptor-option-selected', el)[0] || dom.$('li', el)[0];
 
@@ -136,9 +145,6 @@
         if (e.which === 38 && currentOption.previousSibling) {
             dom.trigger(currentOption.previousSibling, 'click');
         }
-
-        // cancel bubble in all browsers
-        return;
     }
 
     /**
@@ -203,7 +209,7 @@
 })(document);
 },{"pocket-dom":2}],2:[function(require,module,exports){
 (function (global){
-// dom - v1.0.5 - MIT License
+// dom - v1.0.7 - MIT License
 // 2015 (c) OrderGroove Developers
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.dom = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -288,6 +294,32 @@
     };
 
     /***
+     * Prevent default behavior of an event object
+     * @method preventDefault
+     * @param {Event} e
+     */
+    dom.preventDefault = function(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+    };
+
+    /***
+     * Stop propagation of an event
+     * @method stopPropagation
+     * @param {Event} e
+     */
+    dom.stopPropagation = function(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    };
+
+    /***
      * trigger an event from an HTML element
      * @method trigger
      * @param {HTMLElement} el
@@ -300,7 +332,8 @@
             // try structure to avoid phantom bug with Event constructors
             // https://github.com/ariya/phantomjs/issues/11289
             try {
-                ev = new Event(type);
+                ev = document.createEvent('HTMLEvents');
+                ev.initEvent(type, true, false);
                 target.dispatchEvent(ev);
             } catch (e) {}
         } else {

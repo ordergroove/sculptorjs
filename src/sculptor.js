@@ -9,7 +9,6 @@
      * @params {node} select
      * @returns {node|null}
      */
-
     function _buildElement(select) {
         var customElement,
             option,
@@ -34,6 +33,7 @@
                 option = select[i];
 
                 customOption = doc.createElement('li');
+                dom.addClass(customOption, 'sculptor-option');
                 // put text content in custom option
                 customOption.innerHTML = option.innerHTML;
 
@@ -86,9 +86,6 @@
         custom.setAttribute('data-value', target.innerHTML);
         dom.addClass(target, 'sculptor-option-selected');
         dom.removeClass(custom, 'sculptor-dropdown-opened');
-
-        // cancel bubble in all browsers
-        return;
     }
 
     /**
@@ -108,6 +105,11 @@
     function _toggleDropdown(e) {
         var target = dom.getEventTarget(e);
 
+        // avoid toggle class over option elements
+        if (target.__customDropdown__) {
+            return;
+        }
+
         if (dom.hasClass(target, 'sculptor-dropdown-opened')) {
             dom.removeClass(target, 'sculptor-dropdown-opened');
         } else {
@@ -121,6 +123,13 @@
      * @parameter {event} e
      */
     function _keyNavigation(e) {
+        // prevent window key propagation if
+        // up arrow or down arrow are pressed
+        if (e.which === 40 || e.which === 38) {
+            dom.preventDefault(e);
+            dom.stopPropagation(e);
+        }
+
         var el = dom.getEventTarget(e),
             currentOption = dom.$('.sculptor-option-selected', el)[0] || dom.$('li', el)[0];
 
@@ -131,9 +140,6 @@
         if (e.which === 38 && currentOption.previousSibling) {
             dom.trigger(currentOption.previousSibling, 'click');
         }
-
-        // cancel bubble in all browsers
-        return;
     }
 
     /**
