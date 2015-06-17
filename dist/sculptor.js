@@ -47,6 +47,7 @@
                     customOption.setAttribute('data-value', 'disabled');
                 } else {
                     customOption.setAttribute('data-value', option.value);
+                    customOption.setAttribute('data-value-index', i);
                     customOption.__originalDropdown__ = select;
                     customOption.__customDropdown__ = customElement;
 
@@ -71,6 +72,7 @@
     function _onValueChange(e) {
         var target = dom.getEventTarget(e),
             value = target.getAttribute('data-value'),
+            valueIndex = target.getAttribute('data-value-index'),
             select = target.__originalDropdown__,
             custom = target.__customDropdown__,
             selected = dom.$('.sculptor-option-selected', custom)[0];
@@ -80,7 +82,7 @@
         }
 
         // trigger real select change
-        select.value = value;
+        select.selectedIndex = valueIndex;
         dom.trigger(select, 'change');
 
         // remove selected class to previous option element
