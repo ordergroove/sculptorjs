@@ -690,15 +690,14 @@ code {
 }
 /* '' */
 /* --- GENERAL --- */
-section.download {
-  background-color: #a3a1cf;
-  text-align: center;
-}
-section.download .container {
-  padding-top: 0;
+img {
+  max-width: 100%;
 }
 p {
   line-height: 1.5em;
+}
+p.description {
+  margin-top: 70px;
 }
 .button {
   background-color: #26255e;
@@ -719,7 +718,7 @@ p {
 }
 /* --- NAV --- */
 nav {
-  background-color: #a3a1cf;
+  background-color: #7371af;
   text-align: right;
   position: fixed;
   top: 0;
@@ -731,6 +730,9 @@ nav {
 nav .container {
   padding-bottom: 25px;
   padding-top: 25px;
+}
+.nav--released nav {
+  box-shadow: -1px 0 10px rgba(0, 0, 0, 0.5);
 }
 .nav-fixed {
   box-shadow: 1px 0 3px 1px rgba(0, 0, 0, 0.5);
@@ -746,9 +748,17 @@ nav .container {
 .nav-link:first-child {
   margin: 0;
 }
+.nav-logo {
+  float: left;
+  transform: translate(0, -100px);
+  transition: all .35s linear;
+}
+.nav--logo-visible .nav-logo {
+  transform: translate(0, 0);
+}
 /* --- HEADER --- */
 header {
-  background-color: #a3a1cf;
+  background-color: #7371af;
   color: #26255e;
   text-align: center;
   padding: 70px 0 0;
@@ -765,10 +775,7 @@ h1 span {
   left: -99999em;
 }
 h1 img {
-  width: 300px;
-}
-.description {
-  color: #a3a1cf;
+  width: 225px;
 }
 /* --- FEATURES SECTION --- */
 .features {
@@ -789,12 +796,24 @@ h1 img {
 }
 /* --- FOOTER --- */
 footer {
-  background-color: #2a003d;
+  background-color: #7371af;
 }
 footer p {
   color: #ffffff;
   margin: 0;
   text-align: right;
+}
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  header {
+    padding-top: 0;
+  }
+  nav {
+    display: none;
+  }
+  p.description {
+    margin-top: 16px;
+  }
 }
 /* --- SCULPTOR CUSTOM DROPDOWNS --- */
 .sculptor-dropdown {

@@ -7,17 +7,16 @@
 
 /* --- GENERAL --- */
 
-section.download {
-    background-color: @light-primary-color;
-    text-align: center;
-
-    .container {
-        padding-top: 0;
-    }
+img {
+    max-width: 100%;
 }
 
 p {
     line-height: 1.5em;
+
+    &.description {
+        margin-top: 70px;
+    }
 }
 
 .button {
@@ -56,6 +55,13 @@ nav {
     }
 }
 
+.nav--released {
+
+    nav {
+        box-shadow: -1px 0 10px rgba(0, 0, 0, .5);
+    }
+}
+
 .nav-fixed {
     box-shadow: 1px 0 3px 1px rgba(0, 0, 0, .5);
 }
@@ -73,7 +79,18 @@ nav {
     }
 }
 
+.nav-logo {
+    float: left;
+    transform: translate(0, -100px);
+    transition: all .35s linear;
+}
 
+.nav--logo-visible {
+
+    .nav-logo {
+        transform: translate(0, 0);
+    }
+}
 
 /* --- HEADER --- */
 
@@ -97,12 +114,8 @@ h1 {
     }
 
     img {
-        width: 300px;
+        width: 225px;
     }
-}
-
-.description {
-    color: @light-primary-color;
 }
 
 
@@ -131,12 +144,29 @@ h1 {
 /* --- FOOTER --- */
 
 footer  {
-    background-color: @primary-color;
+    background-color: @light-primary-color;
 
     p {
         color: @light-text-color;
         margin: 0;
         text-align: right;
+    }
+}
+
+/* --- MOBILE --- */
+
+@media (max-width: 768px) {
+
+    header {
+        padding-top: 0;
+    }
+
+    nav {
+        display: none;
+    }
+    
+    p.description {
+        margin-top: 16px;
     }
 }
 

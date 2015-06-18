@@ -29,7 +29,7 @@ As we know select elements are really hard to style, mostly if you want them to 
 The first thing you'll need to do is call the **init** method and pass a collection of select elements:
 
 ```js
-sculptor.init(document.getElementsByClassName('costum-select'));
+sculptor.init(document.getElementsByClassName('custom-select'));
 ```
 
 If you have just one element you can do this:
@@ -54,10 +54,10 @@ And this will now appear in your site:
 ```html
 <div data-value="green" class="sculptor-dropdown custom-select colors">
     <ul class="sculptor-dropdown-options">
-        <li data-value="disabled">choose a color</li>
-        <li data-value="#0000f9">blue</li>
-        <li data-value="#00f900">green</li>
-        <li data-value="#f90000">red</li>
+        <li class="sculptor-option" data-value="disabled">choose a color</li>
+        <li class="sculptor-option" data-value="#0000f9">blue</li>
+        <li class="sculptor-option" data-value="#00f900">green</li>
+        <li class="sculptor-option" data-value="#f90000">red</li>
     </ul>
 </div>
 ```
@@ -85,7 +85,7 @@ In the distribution folder you get a CSS file that you can import in your style 
 @import 'sculptor.css';
 ```
 
-Out of the box, **sculptor** takes care of all the styles the element needs to work and look like a select element. The only thing you must add to it is a width so the content you want has enough space. Then the rest of the style you can override depend on the aspect of the custom dropown you're trying to build.
+Out of the box, **sculptor** takes care of all the styles the element needs to work and look like a select element. The only thing you must add to it is a width so the content fits. Then you can override any rule to customize it.
 
 Each element generated will have its class so you can style.
 
@@ -194,7 +194,7 @@ Each element generated will have its class so you can style.
 
 <nav>
     <div class="row">
-        <img src="/assets/img/logo_notitle.png" alt="">
+        <a class="nav-logo" href="#home">LOGO</a>
         <a class="nav-link" href="#install">Install</a>
         <a class="nav-link" href="#use">Use</a>
         <a class="nav-link" href="#styling">Styling</a>

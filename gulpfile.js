@@ -1,10 +1,13 @@
 (function() {
+    'use strict';
+
     var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    less = require('gulp-less'),
-    minifycss = require('gulp-minify-css'),
-    jshint = require('gulp-jshint');
+        uglify = require('gulp-uglify'),
+        rename = require('gulp-rename'),
+        less = require('gulp-less'),
+        minifycss = require('gulp-minify-css'),
+        concat = require('gulp-concat'),
+        jshint = require('gulp-jshint');
 
     // less task
     gulp.task('styles', function(){
@@ -20,8 +23,9 @@
 
     // js task
     gulp.task('scripts', ['lint'], function(){
-        return gulp.src('src/scripts/site.js')
-            .pipe(uglify())
+        return gulp.src('src/scripts/**/*.js')
+            .pipe(concat('site.js'))
+            //.pipe(uglify())
             .pipe(rename({
                 suffix : '.min'
             }))
