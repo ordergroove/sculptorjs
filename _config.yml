@@ -6,4 +6,4 @@ url: "http://ordergroove.github.com/sculptorjs" # the base hostname & protocol f
 # Build settings
 markdown: redcarpet
 
-baseURl: /sculptorjs
+baseurl: /sculptorjs
