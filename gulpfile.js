@@ -25,7 +25,7 @@
     gulp.task('scripts', ['lint'], function(){
         return gulp.src('src/scripts/**/*.js')
             .pipe(concat('site.js'))
-            //.pipe(uglify())
+            .pipe(uglify())
             .pipe(rename({
                 suffix : '.min'
             }))

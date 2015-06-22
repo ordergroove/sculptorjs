@@ -712,15 +712,15 @@ p.description {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all .1s linear;
+  transition: all .25s linear;
 }
 .button:hover {
-  background-color: #2e2d74;
+  background-color: #484780;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 /* --- NAV --- */
 nav {
-  background-color: #7371af;
+  background-color: #2e2d74;
   text-align: right;
   position: fixed;
   top: 0;
@@ -736,11 +736,11 @@ nav {
   box-shadow: 1px 0 3px 1px rgba(0, 0, 0, 0.5);
 }
 .nav-link {
-  color: #26255e;
+  color: #e1e2ef;
   display: inline-block;
   font-size: .85em;
-  line-height: 40px;
-  margin: 0 0 0 15px;
+  line-height: 35px;
+  margin: 5px 0 0 15px;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -760,14 +760,16 @@ nav {
 }
 /* --- HEADER --- */
 header {
-  background-color: #7371af;
-  color: #26255e;
+  background-color: #2e2d74;
+  color: #e1e2ef;
   text-align: center;
   padding: 70px 0 0;
 }
+header .column + .column {
+  text-align: left;
+}
 h1 {
   font-size: 4em;
-  font-family: 'Shadows Into Light', Helvetica, Arial, sans-serif;
   line-height: 1em;
   margin: 0 0 10px;
   position: relative;
@@ -798,10 +800,10 @@ h1 img {
 }
 /* --- FOOTER --- */
 footer {
-  background-color: #7371af;
+  background-color: #2e2d74;
 }
 footer p {
-  color: #26255e;
+  color: #e1e2ef;
   margin: 0;
   text-align: right;
 }
@@ -809,6 +811,9 @@ footer p {
 @media (max-width: 768px) {
   header {
     padding-top: 0;
+  }
+  header .column + .column {
+    text-align: center;
   }
   nav {
     display: none;
