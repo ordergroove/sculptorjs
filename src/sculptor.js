@@ -78,6 +78,7 @@
             valueIndex = target.getAttribute('data-value-index'),
             select = target.__originalDropdown__,
             custom = target.__customDropdown__,
+            customOptionStyle = target.getAttribute('data-option-style'),
             selected = dom.$('.sculptor-option-selected', custom)[0];
 
         if (value === 'disabled') {
@@ -94,6 +95,9 @@
         }
 
         custom.setAttribute('data-value', target.innerHTML);
+        if (customOptionStyle) {
+            custom.setAttribute('style', customOptionStyle);
+        }
         dom.addClass(target, 'sculptor-option-selected');
         dom.removeClass(custom, 'sculptor-dropdown-opened');
     }
