@@ -58,6 +58,9 @@
 
                     if (option.selected) {
                         customElement.setAttribute('data-value', option.innerHTML);
+                        if (customOptionStyle) {
+                            customElement.setAttribute('style', customOptionStyle);
+                        }
                     }
                 }
 
