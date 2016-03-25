@@ -47,6 +47,7 @@
                     customOptionStyle = option.getAttribute('data-option-style');
                     if (customOptionStyle) {
                         customOption.setAttribute('style', customOptionStyle);
+                        customOption.setAttribute('data-option-style', customOptionStyle);
                     }
                     customOption.__originalDropdown__ = select;
                     customOption.__customDropdown__ = customElement;
