@@ -46,6 +46,9 @@
                 if (option.disabled) {
                     customOption.setAttribute('data-value', 'disabled');
                 } else {
+                    if (option.style) {
+                        customOption.setAttribute('style', option.style);
+                    }
                     customOption.setAttribute('data-value', option.value);
                     customOption.setAttribute('data-value-index', i);
                     customOption.__originalDropdown__ = select;

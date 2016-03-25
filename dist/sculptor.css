@@ -1,6 +1,6 @@
 .sculptor-dropdown {
-  background-color: #ffffff;
-  border-color: #000000;
+  background-color: white;
+  border-color: black;
   border-style: solid;
   border-width: 1px;
   border-radius: 0;
@@ -10,8 +10,8 @@
   position: relative;
 }
 .sculptor-dropdown .sculptor-dropdown-options {
-  background-color: #ffffff;
-  border-color: #000000;
+  background-color: white;
+  border-color: black;
   border-style: solid;
   border-width: 1px;
   box-sizing: content-box;
